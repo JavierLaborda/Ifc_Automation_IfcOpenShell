@@ -1,0 +1,29 @@
+# Ignorar archivos y carpetas Python generados automáticamente
+__pycache__/
+*.py[cod]
+*.log
+
+# Ignorar entornos virtuales
+env/
+venv/
+*.egg-info/
+
+# Ignorar configuraciones específicas del sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Ignorar archivos del entorno Python Portable (excepto los necesarios)
+python_portable/Lib/test/
+python_portable/Lib/idlelib/
+python_portable/Tools/
+
+# Ignorar grandes binarios no esenciales
+*.exe
+*.dll
+*.iso
+
+# Ignorar archivos de trabajo de editores de texto y sistemas operativos
+.vscode/
+.idea/
+*.swp
