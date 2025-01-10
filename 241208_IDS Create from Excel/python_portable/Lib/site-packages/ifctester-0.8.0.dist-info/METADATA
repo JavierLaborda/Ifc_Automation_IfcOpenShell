@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: ifctester
+Version: 0.8.0
+Summary: IFC model auditing tool with support for IDS
+Author-email: Dion Moult <dion@thinkmoult.com>
+Project-URL: Homepage, http://ifcopenshell.org
+Project-URL: Documentation, https://docs.ifcopenshell.org
+Project-URL: Issues, https://github.com/IfcOpenShell/IfcOpenShell/issues
+Keywords: IFC,IDS,BIM
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)
+Description-Content-Type: text/markdown
+Requires-Dist: ifcopenshell
+Requires-Dist: python-dateutil
+Requires-Dist: xmlschema
+Requires-Dist: numpy
+
