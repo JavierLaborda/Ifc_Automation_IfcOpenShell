@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ids xmlns="http://standards.buildingsmart.org/IDS" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/1.0/ids.xsd">
+    <info>
+        <title>IDS_Test_Enero25</title>
+        <copyright>José Javier Laborda López</copyright>
+        <version>0.0.1</version>
+        <description>Primer archivo IDS Test Enero 2025</description>
+        <author>jj.laborda.lopez@gmail.com</author>
+        <purpose>Comprobación entidades básicas IFC</purpose>
+        <milestone>Coordinación 3D</milestone>
+    </info>
+    <specifications>
+        <specification name="Especificación 1" ifcVersion="IFC4X3_ADD2" identifier="1" description="Se comprobará que el nombre del IfcProject tiene caracteres en su contenido." instructions="Debe indicarse el nombre del proyecto.">
+            <applicability minOccurs="1" maxOccurs="unbounded">
+                <entity>
+                    <name>
+                        <simpleValue>IFCPROJECT</simpleValue>
+                    </name>
+                </entity>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                    <value>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value=".{1,}" />
+                        </xs:restriction>
+                    </value>
+                </attribute>
+            </requirements>
+        </specification>
+        <specification name="Especificación 2" ifcVersion="IFC4X3_ADD2" identifier="2" description="Se comprobará que el nombre del IfcSite es distinto de &quot;Default&quot;." instructions="Debe indicarse el emplazamiento en el que se ubica el edificio.">
+            <applicability minOccurs="1" maxOccurs="unbounded">
+                <entity>
+                    <name>
+                        <simpleValue>IFCSITE</simpleValue>
+                    </name>
+                </entity>
+            </applicability>
+            <requirements>
+                <attribute cardinality="prohibited">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                    <value>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value="^Default$" />
+                        </xs:restriction>
+                    </value>
+                </attribute>
+            </requirements>
+        </specification>
+        <specification name="Especificación 3" ifcVersion="IFC4X3_ADD2" identifier="3" description="Se comprobará que el nombre del IfcBuilding tiene caracteres en su contenido." instructions="Debe indicarse el nombre del edificio.">
+            <applicability minOccurs="1" maxOccurs="unbounded">
+                <entity>
+                    <name>
+                        <simpleValue>IFCBUILDING</simpleValue>
+                    </name>
+                </entity>
+            </applicability>
+            <requirements>
+                <attribute cardinality="required">
+                    <name>
+                        <simpleValue>Name</simpleValue>
+                    </name>
+                    <value>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value=".{1,}" />
+                        </xs:restriction>
+                    </value>
+                </attribute>
+            </requirements>
+        </specification>
+        <specification name="Especificación 4" ifcVersion="IFC4X3_ADD2" identifier="4" description="Se comprobará que el RCE_CLA_01_Codigos_Funciones compieza por F_EST." instructions="Debe indicarse el valor RCE_CLA correspondiente a Codigo Funciones.">
+            <applicability minOccurs="1" maxOccurs="unbounded">
+                <entity>
+                    <name>
+                        <simpleValue>IFCWALL</simpleValue>
+                    </name>
+                </entity>
+            </applicability>
+            <requirements>
+                <property dataType="IFCTEXT" cardinality="required">
+                    <propertySet>
+                        <simpleValue>RCE_CLA</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>RCE_CLA_01_Codigo_Funciones</simpleValue>
+                    </baseName>
+                    <value>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value=".*F_.*" />
+                        </xs:restriction>
+                    </value>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Especificación 5" ifcVersion="IFC4X3_ADD2" identifier="5" description="Se comprobará elementos del modelo que tengan Entity IFCSLAB y PredefinedType ROOF" instructions="Debe comprobarse número de elementos Entity IFCSLAB ROOF">
+            <applicability minOccurs="1" maxOccurs="unbounded">
+                <entity>
+                    <name>
+                        <simpleValue>IFCSLAB</simpleValue>
+                    </name>
+                </entity>
+            </applicability>
+            <requirements>
+                <entity>
+                    <name>
+                        <simpleValue>IFCSLAB</simpleValue>
+                    </name>
+                    <predefinedType>
+                        <simpleValue>ROOF</simpleValue>
+                    </predefinedType>
+                </entity>
+            </requirements>
+        </specification>
+        <specification name="Especificación 6" ifcVersion="IFC4X3_ADD2" identifier="6" description="Se comprobará que los elementos que incluyen cadena Ventana en RCE_CLA_01_Descripcion_Funciones NO tienen valor RCE_CLA_03_Codigo_Materiales M_CMM_85_10_05 (bloque de hormigón fachada)" instructions="Debe comprobarse entity de los elementos que incluyen ventana en RCE_CLA_01_Descripcion_Funciones coincide con materiales en RCE_CLA_03_Codigo_Materiales.">
+            <applicability minOccurs="1" maxOccurs="unbounded">
+                <property dataType="IFCTEXT">
+                    <propertySet>
+                        <simpleValue>RCE_CLA</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>RCE_CLA_01_Descripcion_Funciones</simpleValue>
+                    </baseName>
+                    <value>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value="^.*[Vv]entana.*$" />
+                        </xs:restriction>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <property dataType="IFCTEXT" cardinality="prohibited">
+                    <propertySet>
+                        <simpleValue>RCE_CLA</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>RCE_CLA_03_Codigo_Materiales</simpleValue>
+                    </baseName>
+                    <value>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value="^M_CMM_85_10_05$" />
+                        </xs:restriction>
+                    </value>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="Especificación 7" ifcVersion="IFC4X3_ADD2" identifier="7" description="Se comrpobará que el valor F_EST_05_20_80_05 de RCE_CLA_01_Codigo_Funciones, coincide con IFCFOOTING STRIP_FOOTING" instructions="Debe comprobarse que RCE_CLA_01_Codigo_Funciones - coincide con Entidad. ">
+            <applicability minOccurs="1" maxOccurs="unbounded">
+                <property dataType="IFCTEXT">
+                    <propertySet>
+                        <simpleValue>RCE_CLA</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>RCE_CLA_01_Codigo_Funciones</simpleValue>
+                    </baseName>
+                    <value>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value="^F_EST_05_20_80_05$" />
+                        </xs:restriction>
+                    </value>
+                </property>
+            </applicability>
+            <requirements>
+                <entity>
+                    <name>
+                        <simpleValue>IFCFOOTING</simpleValue>
+                    </name>
+                    <predefinedType>
+                        <simpleValue>STRIP_FOOTING</simpleValue>
+                    </predefinedType>
+                </entity>
+            </requirements>
+        </specification>
+    </specifications>
+</ids>
